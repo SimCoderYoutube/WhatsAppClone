@@ -1,4 +1,4 @@
-package com.simcoder.whatsappclone;
+package com.simcoder.whatsappclone.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
