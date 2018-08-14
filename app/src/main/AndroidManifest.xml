@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.simcoder.whatsappclone">
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainPageActivity" />
-        <activity android:name=".FindUserActivity"></activity>
+        <activity android:name=".FindUserActivity" />
+        <activity android:name=".ChatActivity"></activity>
     </application>
 
 </manifest>
