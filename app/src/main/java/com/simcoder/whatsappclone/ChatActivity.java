@@ -2,6 +2,7 @@ package com.simcoder.whatsappclone;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -81,12 +82,18 @@ public class ChatActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     String  text = "",
                             creatorID = "";
+                    ArrayList<String> mediaUrlList = new ArrayList<>();
+
                     if(dataSnapshot.child("text").getValue() != null)
                         text = dataSnapshot.child("text").getValue().toString();
                     if(dataSnapshot.child("creator").getValue() != null)
                         creatorID = dataSnapshot.child("creator").getValue().toString();
 
-                    MessageObject mMessage = new MessageObject(dataSnapshot.getKey(), creatorID, text);
+                    if(dataSnapshot.child("media").getChildrenCount() > 0)
+                        for (DataSnapshot mediaSnapshot : dataSnapshot.child("media").getChildren())
+                            mediaUrlList.add(mediaSnapshot.getValue().toString());
+
+                    MessageObject mMessage = new MessageObject(dataSnapshot.getKey(), creatorID, text, mediaUrlList);
                     messageList.add(mMessage);
                     mChatLayoutManager.scrollToPosition(messageList.size()-1);
                     mChatAdapter.notifyDataSetChanged();
